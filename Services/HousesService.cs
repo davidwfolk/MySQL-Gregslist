@@ -5,40 +5,40 @@ using fullstack_gregslist.Repositories;
 
 namespace fullstack_gregslist.Controllers
 {
-  public class CarsService
+  public class HousesService
   {
-    private readonly CarsRepository _repo;
+    private readonly HousesRepository _repo;
 
-    public CarsService(CarsRepository repo)
+    public HousesService(HousesRepository repo)
     {
       _repo = repo;
     }
 
-    internal Car Create(Car newCar)
+    internal House Create(House newHouse)
     {
-      return _repo.Create(newCar);
+      return _repo.Create(newHouse);
     }
 
-    internal IEnumerable<Car> GetAll()
+    internal IEnumerable<House> GetAll()
     {
       return _repo.GetAll();
     }
-    public Car GetById(int id)
+    public House GetById(int id)
     {
-      Car foundCar = _repo.GetById(id);
-      if (foundCar == null)
+      House foundHouse = _repo.GetById(id);
+      if (foundHouse == null)
       {
         throw new Exception("Invalid Id");
       }
-      return foundCar;
+      return foundHouse;
     }
 
     internal string Delete(int id, string userId)
     {
-      Car foundCar = GetById(id);
-      if (foundCar.UserId != userId)
+      House foundHouse = GetById(id);
+      if (foundHouse.UserId != userId)
       {
-        throw new Exception("This is not your car!");
+        throw new Exception("This is not your House!");
       }
       if (_repo.Delete(id, userId))
       {

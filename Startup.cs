@@ -46,7 +46,7 @@ namespace fullstack_gregslist
         {
           builder
           .WithOrigins(new string[]{
-                "http://localhost:8080", "http://localhost:80801"
+                "http://localhost:8080", "http://localhost:8081"
           })
           .AllowAnyMethod()
           .AllowAnyHeader()
@@ -58,6 +58,8 @@ namespace fullstack_gregslist
       services.AddScoped<IDbConnection>(x => CreateDbConnection());
       services.AddTransient<CarsService>();
       services.AddTransient<CarsRepository>();
+      services.AddTransient<HousesService>();
+      services.AddTransient<HousesRepository>();
     }
 
     private IDbConnection CreateDbConnection()

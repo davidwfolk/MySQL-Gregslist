@@ -9,21 +9,21 @@ namespace fullstack_gregslist.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
-  public class CarsController : ControllerBase
+  public class HousesController : ControllerBase
   {
-    private readonly CarsService _cs;
+    private readonly HousesService _hs;
 
-    public CarsController(CarsService cs)
+    public HousesController(HousesService hs)
     {
-      _cs = cs;
+      _hs = hs;
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Car>> GetAll()
+    public ActionResult<IEnumerable<House>> GetAll()
     {
       try
       {
-        return Ok(_cs.GetAll());
+        return Ok(_hs.GetAll());
       }
       catch (System.Exception err)
       {
@@ -33,7 +33,7 @@ namespace fullstack_gregslist.Controllers
 
     [Authorize]
     [HttpPost]
-    public ActionResult<Car> Create([FromBody] Car newCar)
+    public ActionResult<House> Create([FromBody] House newHouse)
     {
       try
       {
@@ -42,8 +42,8 @@ namespace fullstack_gregslist.Controllers
         {
           throw new Exception("Must be logged in to create.");
         }
-        newCar.UserId = user.Value;
-        return Ok(_cs.Create(newCar));
+        newHouse.UserId = user.Value;
+        return Ok(_hs.Create(newHouse));
       }
       catch (System.Exception err)
       {
@@ -63,7 +63,7 @@ namespace fullstack_gregslist.Controllers
           throw new Exception("you must be logged in to delete");
         }
         string userId = user.Value;
-        return Ok(_cs.Delete(id, userId));
+        return Ok(_hs.Delete(id, userId));
       }
       catch (System.Exception error)
       {
