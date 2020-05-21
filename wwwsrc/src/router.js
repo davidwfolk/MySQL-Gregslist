@@ -6,6 +6,10 @@ import Home from "./views/Home.vue";
 import Dashboard from "./views/Dashboard.vue";
 // @ts-ignore
 import Houses from "./views/Houses.vue";
+// @ts-ignore
+import Car from "./views/Car.vue"
+// @ts-ignore
+import MyCar from "./views/MyCars.vue"
 import { authGuard } from "@bcwdev/auth0-vue";
 
 Vue.use(Router);
@@ -28,6 +32,17 @@ export default new Router({
       name: "houses",
       component: Houses,
       beforeEnter: authGuard
+    },
+    {
+      path: "/cars/user",
+      name: "mycars",
+      component: MyCar,
+      beforeEnter: authGuard
+    },
+    {
+      path: "/cars/:carId",
+      name: "car",
+      component: Car,
     }
   ]
 });
