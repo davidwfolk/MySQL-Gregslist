@@ -64,9 +64,14 @@
       <button type="submit" class="btn btn-primary">Add Car</button>
     </form>
     <div class="row justify-content-center">
-      <div class="col-3 m-3 border rounded" v-for="car in cars" :key="car.id">
+      <div
+        class="col-3 m-3 border rounded"
+        v-for="car in cars"
+        @click="$router.push({name: 'car', params: {carId: car.id}})"
+        :key="car.id"
+      >
         <h1>{{car.make}}</h1>
-        <h2>{{car.model}}</h2> 
+        <h2>{{car.model}}</h2>
         <img :src="car.imgUrl" class="img-fluid" alt srcset />
         <h2>{{car.price}}</h2>
         <h2>{{car.year}}</h2>

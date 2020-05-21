@@ -24,7 +24,10 @@
         >
           <router-link class="nav-link" :to="{ name: 'dashboard' }">My-Dashboard</router-link>
         </li>
-         <li
+        <li class="nav-item" :class="{ active: $route.name == 'mycars'}">
+          <router-link :to="{name: 'mycars'}" class="nav-link">My Cars</router-link>
+        </li>
+        <li
           class="nav-item"
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'houses' }"
